@@ -1,5 +1,16 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const config = require('./config/keys');
+require('./models/User');
 require('./services/passport');
+
+mongoose.connect(config.mongoURI, {useNewUrlParser: true});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+console.log('success');
+});
 
 const app = express();
 
