@@ -4,7 +4,7 @@ const config = require('./config/keys');
 require('./models/User');
 require('./services/passport');
 
-mongoose.connect(config.mongoURI, {useNewUrlParser: true});
+mongoose.connect(config.mongoCloudURI, {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
